@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 const SDiv = styled.div`
     font-size: 28px;
+    padding-top: 10px;
 `;
 
 const Timer: React.FC = () => {
@@ -29,8 +30,13 @@ const Timer: React.FC = () => {
     }
 
     function handleClickReset() {
-        setSeconds(0);
-        setIsRunning(false);
+        if (isRunning) {
+            setIsRunning(false);
+        }
+        if (!isRunning) {
+            setSeconds(0);
+            setIsRunning(false);
+        }
     }
 
     return (
@@ -39,8 +45,8 @@ const Timer: React.FC = () => {
             <SDiv>
                 {minutesString}:{secondsString}
             </SDiv>
-            <Button text='запустить/пауза' onClick={handleClickStart}></Button>
-            <Button text='возобновить/сбросить' onClick={handleClickReset}></Button>
+            <Button isRunning={isRunning} text={isRunning ? 'пауза' : 'запустить'} onClick={handleClickStart}></Button>
+            <Button text='сбросить' onClick={handleClickReset}></Button>
         </>
     );
 };

@@ -7,7 +7,7 @@ const SApp = styled.div`
     border: 1px solid grey;
     border-radius: 10px;
     background: #f4a460;
-    padding: 20px;
+    padding: 10px 30px;
     box-sizing: border-box;
 `;
 
